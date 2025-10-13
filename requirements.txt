@@ -7,7 +7,7 @@ typing-extensions>=4.0.0
 # Vector Database - RECOMMENDED
 chromadb>=0.4.0
 
-# Embedding Generation - RECOMMENDED  
+# Embedding Generation - RECOMMENDED
 sentence-transformers>=2.2.0
 
 # Similarity Search - OPTIONAL
