@@ -1,34 +1,34 @@
-# 🎯 Modular RAG System
+# Modular RAG System
 
 A comprehensive, production-ready Retrieval-Augmented Generation (RAG) system with file upload capabilities, real-time processing, and web-accessible links for LLM integration.
 
-## 🚀 Features
+## Features
 
-### 📁 **File Upload System**
+### **File Upload System**
 - **Folder-based uploads**: Drop JSON/TXT files into organized folders
 - **Web-accessible links**: Direct HTTP links for LLM access
 - **Real-time processing**: Files are automatically embedded and indexed
 - **Multiple formats**: JSON (structured data) and TXT (documentation) support
 
-### 🧠 **Advanced RAG Pipeline**
+### **Advanced RAG Pipeline**
 - **Multi-backend embeddings**: Ollama → Sentence Transformers → Fallback
 - **Smart text chunking**: Optimized for different content types
 - **Vector storage**: ChromaDB with SQLite fallback
 - **Similarity search**: FAISS-powered semantic matching
 
-### 🔐 **Privacy & Security**
+### **Privacy & Security**
 - **Local-only processing**: No external data transmission
 - **Privacy controls**: Sensitive data filtering and anonymization
 - **Secure storage**: Encrypted local file system
 - **Access controls**: Configurable permissions
 
-### 🌐 **Web Integration**
+### **Web Integration**
 - **HTTP file server**: Built-in web server for file access
 - **REST API**: JSON endpoints for file listing and metadata
 - **CORS support**: Cross-origin resource sharing enabled
 - **Direct LLM access**: Simple links for AI model consumption
 
-## 📦 Quick Start
+## Quick Start
 
 ### 1. Setup
 ```bash
@@ -52,8 +52,8 @@ python3 enhanced_rag_system.py --port 8089
 ### 3. Upload Files
 ```bash
 # Place your files in the upload folders
-uploads/json/     # For JSON files
-uploads/txt/      # For text files
+uploads/json/ # For JSON files
+uploads/txt/ # For text files
 
 # Files are automatically processed and available via web links
 ```
@@ -65,11 +65,11 @@ response = system.query_with_files("What project information do you have?")
 
 # Get direct links for LLM access
 for ref in response['file_references']:
-    print(f"File: {ref['filename']}")
-    print(f"Link: {ref['access_link']}")
+ print(f"File: {ref['filename']}")
+ print(f"Link: {ref['access_link']}")
 ```
 
-## 🛠️ Installation
+## ️ Installation
 
 ### Requirements
 - **Python 3.8+**
@@ -90,7 +90,7 @@ sudo apt-get install libx11-dev libxext-dev
 sudo apt-get install curl git python3-venv
 ```
 
-## 📖 Usage Examples
+## Usage Examples
 
 ### Basic File Upload and Query
 ```python
@@ -107,7 +107,7 @@ print(f"File available at: {rag.file_manager.get_file_link(uploaded_file.file_id
 # Query with file references
 response = rag.query_with_files("Show me the documentation")
 for ref in response['file_references']:
-    print(f"📄 {ref['filename']} -> {ref['access_link']}")
+ print(f" {ref['filename']} -> {ref['access_link']}")
 ```
 
 ### Web Interface Usage
@@ -116,8 +116,8 @@ for ref in response['file_references']:
 python3 rag_launcher.py --system enhanced --port 8089
 
 # Access web interface
-curl http://localhost:8089/files  # List all files
-curl http://localhost:8089/files/[file_id]/[filename]  # Access specific file
+curl http/localhost:8089/files # List all files
+curl http/localhost:8089/files/[file_id]/[filename] # Access specific file
 ```
 
 ### Integration with LLM
@@ -139,54 +139,54 @@ Please analyze the content and provide insights.
 """
 ```
 
-## 🏗️ Architecture
+## ️ Architecture
 
 ```
-┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
-│   File Upload   │    │   Web Server     │    │ Query Interface │
-│   Manager       │    │   (Port 8089)    │    │                 │
-└─────────┬───────┘    └─────────┬────────┘    └─────────┬───────┘
-          │                      │                       │
-          ▼                      ▼                       ▼
-    ┌─────────────────────────────────────────────────────────────┐
-    │                Embedding Pipeline                           │
-    │  ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐   │
-    │  │   Ollama    │ │ Sentence    │ │   Fallback          │   │
-    │  │ Embeddings  │ │Transformers │ │   Embedder          │   │
-    │  └─────────────┘ └─────────────┘ └─────────────────────┘   │
-    └─────────────────────┬───────────────────────────────────────┘
-                          ▼
-    ┌─────────────────────────────────────────────────────────────┐
-    │                  RAG System Core                            │
-    │  ┌─────────────────┐    ┌──────────────────────────────┐    │
-    │  │ Vector Database │    │ Similarity Search & Ranking │    │
-    │  │   (ChromaDB)    │    │         (FAISS)             │    │
-    │  └─────────────────┘    └──────────────────────────────┘    │
-    └─────────────────────────────────────────────────────────────┘
+┌─────────────────┐ ┌──────────────────┐ ┌─────────────────┐
+│ File Upload │ │ Web Server │ │ Query Interface │
+│ Manager │ │ (Port 8089) │ │ │
+└─────────┬───────┘ └─────────┬────────┘ └─────────┬───────┘
+ │ │ │
+ ▼ ▼ ▼
+ ┌─────────────────────────────────────────────────────────────┐
+ │ Embedding Pipeline │
+ │ ┌─────────────┐ ┌─────────────┐ ┌─────────────────────┐ │
+ │ │ Ollama │ │ Sentence │ │ Fallback │ │
+ │ │ Embeddings │ │Transformers │ │ Embedder │ │
+ │ └─────────────┘ └─────────────┘ └─────────────────────┘ │
+ └─────────────────────┬───────────────────────────────────────┘
+ ▼
+ ┌─────────────────────────────────────────────────────────────┐
+ │ RAG System Core │
+ │ ┌─────────────────┐ ┌──────────────────────────────┐ │
+ │ │ Vector Database │ │ Similarity Search & Ranking │ │
+ │ │ (ChromaDB) │ │ (FAISS) │ │
+ │ └─────────────────┘ └──────────────────────────────┘ │
+ └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📝 Configuration
+## Configuration
 
 ### Basic Configuration (`rag_config.json`)
 ```json
 {
-  "storage_path": "./rag_storage",
-  "file_upload": {
-    "port": 8089,
-    "upload_folder": "uploads",
-    "supported_formats": [".json", ".txt"],
-    "max_file_size": "10MB"
-  },
-  "embedding_pipeline": {
-    "chunk_size": 512,
-    "cache_size": 1000,
-    "batch_timeout": 30
-  },
-  "rag_system": {
-    "vector_backend": "auto",
-    "max_documents": 10000,
-    "similarity_threshold": 0.7
-  }
+ "storage_path": "./rag_storage",
+ "file_upload": {
+ "port": 8089,
+ "upload_folder": "uploads",
+ "supported_formats": [".json", ".txt"],
+ "max_file_size": "10MB"
+ },
+ "embedding_pipeline": {
+ "chunk_size": 512,
+ "cache_size": 1000,
+ "batch_timeout": 30
+ },
+ "rag_system": {
+ "vector_backend": "auto",
+ "max_documents": 10000,
+ "similarity_threshold": 0.7
+ }
 }
 ```
 
@@ -194,8 +194,8 @@ Please analyze the content and provide insights.
 ```python
 # Custom embedding configuration
 system = EnhancedRAGSystem(
-    storage_path="./custom_storage",
-    upload_port=9090
+ storage_path="./custom_storage",
+ upload_port=9090
 )
 
 # Add files programmatically
@@ -203,87 +203,87 @@ file_info = system.add_file_from_path("/path/to/document.json")
 
 # Query with custom parameters
 response = system.query_with_files(
-    query="Find project documentation",
-    max_results=10
+ query="Find project documentation",
+ max_results=10
 )
 ```
 
-## 🔧 API Reference
+## API Reference
 
 ### EnhancedRAGSystem Class
 ```python
 class EnhancedRAGSystem:
-    def __init__(self, storage_path: Path, upload_port: int = 8089)
-    def start()  # Start all system components
-    def stop()   # Stop all system components
-    def query_with_files(self, query: str, max_results: int = 5) -> Dict
-    def add_file_from_path(self, file_path: str) -> UploadedFile
-    def get_system_stats() -> Dict
+ def __init__(self, storage_path: Path, upload_port: int = 8089)
+ def start() # Start all system components
+ def stop() # Stop all system components
+ def query_with_files(self, query: str, max_results: int = 5) -> Dict
+ def add_file_from_path(self, file_path: str) -> UploadedFile
+ def get_system_stats() -> Dict
 ```
 
 ### Web API Endpoints
 ```http
-GET /files                          # List all uploaded files
-GET /files/{file_id}/{filename}     # Download specific file
+GET /files # List all uploaded files
+GET /files/{file_id}/{filename} # Download specific file
 ```
 
 ### Response Format
 ```python
 {
-    'query': str,                    # Original query
-    'rag_results': RAGResult,        # Semantic search results
-    'file_references': List[Dict],   # Direct file links
-    'processing_time': float,        # Query processing time
-    'total_documents': int,          # Total embedded documents
-    'file_links_available': bool     # Whether file links exist
+ 'query': str, # Original query
+ 'rag_results': RAGResult, # Semantic search results
+ 'file_references': List[Dict], # Direct file links
+ 'processing_time': float, # Query processing time
+ 'total_documents': int, # Total embedded documents
+ 'file_links_available': bool # Whether file links exist
 }
 ```
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 1. **Import Errors**
-   ```bash
-   # Solution: Activate virtual environment
-   source venv/bin/activate
-   ```
+ ```bash
+ # Solution: Activate virtual environment
+ source venv/bin/activate
+ ```
 
 2. **Port Already in Use**
-   ```python
-   # Solution: Use different port
-   system = EnhancedRAGSystem(port=9090)
-   ```
+ ```python
+ # Solution: Use different port
+ system = EnhancedRAGSystem(port=9090)
+ ```
 
 3. **File Processing Errors**
-   ```bash
-   # Check file format and encoding
-   file -bi your_file.json  # Should show UTF-8
-   ```
+ ```bash
+ # Check file format and encoding
+ file -bi your_file.json # Should show UTF-8
+ ```
 
 4. **Web Server Issues**
-   ```bash
-   # Check firewall and permissions
-   sudo ufw allow 8089
-   ```
+ ```bash
+ # Check firewall and permissions
+ sudo ufw allow 8089
+ ```
 
 ### Performance Tuning
 ```python
 # Adjust chunk size for better performance
-embedding_pipeline = EmbeddingPipeline(chunk_size=256)  # Smaller chunks
+embedding_pipeline = EmbeddingPipeline(chunk_size=256) # Smaller chunks
 
-# Increase cache for faster queries  
+# Increase cache for faster queries
 system = EnhancedRAGSystem(cache_size=2000)
 
 # Optimize for specific use case
 config = {
-    "chunk_size": 512,      # Standard documents
-    "max_results": 5,       # Focused results
-    "similarity_threshold": 0.75  # Higher precision
+ "chunk_size": 512, # Standard documents
+ "max_results": 5, # Focused results
+ "similarity_threshold": 0.75 # Higher precision
 }
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create feature branch: `git checkout -b feature-name`
@@ -291,11 +291,11 @@ config = {
 4. Push to branch: `git push origin feature-name`
 5. Submit pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🔗 Links
+## Links
 
 - **Documentation**: [Full API docs](docs/)
 - **Examples**: [Usage examples](examples/)
@@ -304,6 +304,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**Built for superhuman productivity at skill level 10000** 🚀
+**Built for superhuman productivity at skill level 10000**
 
 *Combining real-time data ingestion, intelligent semantic search, and web-accessible file links for seamless LLM integration.*
