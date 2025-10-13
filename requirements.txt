@@ -1,0 +1,29 @@
+# Core Requirements - REQUIRED
+requests>=2.25.0
+numpy>=1.21.0
+pathlib2>=2.3.0
+typing-extensions>=4.0.0
+
+# Vector Database - RECOMMENDED
+chromadb>=0.4.0
+
+# Embedding Generation - RECOMMENDED  
+sentence-transformers>=2.2.0
+
+# Similarity Search - OPTIONAL
+faiss-cpu>=1.7.0
+
+# Token Management - OPTIONAL
+tiktoken>=0.4.0
+
+# GUI Support - OPTIONAL
+PyQt5>=5.15.0
+
+# Keystroke Logging - OPTIONAL
+pynput>=1.7.0
+
+# Development & Testing - OPTIONAL
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+black>=22.0.0
+flake8>=5.0.0
